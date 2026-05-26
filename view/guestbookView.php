@@ -16,48 +16,103 @@
 <h1>TI2 | Livre d'or</h1>
 <!-- Formulaire d'ajout d'un message -->
 <h2>Ici le formulaire</h2>
-    <section class="form-section">
-        <form id="guestbook-form" method="POST">
 
-            <div class="form-group">
-                <label for="firstname">Votre prénom</label>
-                <input type="text" id="firstname" name="firstname" placeholder="Votre prénom">
-            </div>
+<main>
 
-            <div class="form-group">
-                <label for="lastname">Votre nom</label>
-                <input type="text" id="lastname" name="lastname" placeholder="Votre nom">
-            </div>
+<?php
+    if(isset($insert)):
+        if($insert===false):
+?>
+    <div class="echec-message">Echec lors de l'insertion, veuillez ré éssayer
+        <script> setTimeout(
+            function() {
+                window.location.href="./";
+            }, 2000
+        );
+        </script>
+    </div>
 
-            <div class="form-group">
-                <label for="phone">Votre tel</label>
-                <input type="text" id="phone" name="phone" placeholder="Ex : 0464 28 48 50">
-            </div>
+<?php
+    else:
+?>
 
-            <div class="form-group">
-                <label for="postcode">Votre code postal</label>
-                <input type="text" id="postcode" name="postcode" placeholder="Ex : 1190">
-            </div>
+    <div class="reussite-message">Merci pour votre message, vous allez être redirigé
+        <script> setTimeout(
+            function() {
+                window.location.href="./";
+            }, 2000
+        );
+        </script>
+    </div>
 
-            <div class="form-group">
-                <label for="usermail">Votre email</label>
-                <input type="text" id="usermail" name="usermail" placeholder="Ex : Jeandupont@gmail.com">
-            </div>
+<?php   
+    endif;
+        endif;
+?>
+
+<section class="form-section">
+    <form id="guestbook-form" method="POST">
+
+        <div class="form-group">
+            <label for="firstname">Votre prénom</label>
+            <input type="text" id="firstname" name="firstname" placeholder="Votre prénom">
+        </div>
+
+        <div class="form-group">
+            <label for="lastname">Votre nom</label>
+            <input type="text" id="lastname" name="lastname" placeholder="Votre nom">
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Votre tel</label>
+            <input type="text" id="phone" name="phone" placeholder="Ex : 0464 28 48 50">
+        </div>
+
+        <div class="form-group">
+            <label for="postcode">Votre code postal</label>
+            <input type="text" id="postcode" name="postcode" placeholder="Ex : 1190">
+        </div>
+
+        <div class="form-group">
+            <label for="usermail">Votre email</label>
+            <input type="text" id="usermail" name="usermail" placeholder="Ex : Jeandupont@gmail.com">
+        </div>
                    
-            <div class="form-group">
-                <label for="message">Votre message</label>
-                <textarea id="message" name="message" rows="4" placeholder="Votre message"></textarea>
-            </div>
+        <div class="form-group">
+            <label for="message">Votre message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Votre message"></textarea>
+        </div>
                    
-                <button type="submit" class="submit-btn">Envoyer votre message</button>
-        </form>
-    </section>
+            <button type="submit" class="submit-btn">Envoyer votre message</button>
+    </form>
+</section>
+
 <!-- Si pas de message -->
+ <?php
+ $nbMessage = count($messages);
+    if(empty($nbMessage)):
+ ?>
 <h3>Pas encore de message</h3>
 <!-- Si 1 message -->
-<h3>Il y a 1 message</h3>
-<!-- Si plusieurs messages -->
-<h3>Il y a X messages</h3>
+<?php
+else:
+    $pluriel = $nbMessage>1 ? "s" :"";
+?>
+<h3>Message<?= $pluriel ?> récent<?= $pluriel ?></h3>
+
+<?php
+    foreach($messages as $message):
+?>
+
+<div class="message_card">
+    <h3>Ecrit par <?= htmlspecialchars($message['email_message'])?> le 
+    <p><?= htmlspecialchars($message['date_message']) ?></p>
+</div>
+
+<?php
+    endforeach;
+    endif;
+?>  
 
 <!-- Pagination (BONUS) -->
 
@@ -89,4 +144,3 @@ var_dump($_GET);
 <script src="js/validation.js"></script>
 </body>
 </html>
-
