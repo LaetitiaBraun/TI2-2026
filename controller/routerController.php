@@ -1,3 +1,0 @@
-<?php
-# controller/routerController.php
-
