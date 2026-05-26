@@ -28,8 +28,8 @@ try{
     die($e->getMessage());
 }
 
-if(isset($_POST['usermail'], $_POST['message'])){
-    $insert = insertMessage($connectDB, $_POST['usermail'], $_POST['message']);
+if(isset($_POST['firstname'], $_POST['lastname'],$_POST['phone'],$_POST['postcode'] ,$_POST['usermail'], $_POST['message'])){
+    $insert = insertMessage($connectDB,$_POST['firstname'], $_POST['lastname'],$_POST['phone'],$_POST['postcode'] ,$_POST['usermail'], $_POST['message']);
 }
 
 $messages = selectAllMessage($connectDB);

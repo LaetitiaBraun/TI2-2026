@@ -65,7 +65,7 @@ function insertMessage(PDO $db,
 function selectAllMessage(PDO $db): array
 {
     // try catch
-    $stmt = $db->query("SELECT * FROM `message` ORDER BY `usermail` DESC");
+    $stmt = $db->query("SELECT * FROM `guestbook` ORDER BY `usermail` DESC");
     // si la requête a réussi,
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     // bonne pratique, fermez le curseur
