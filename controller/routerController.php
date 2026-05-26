@@ -1,7 +1,7 @@
 <?php
 # controller/routerController.php
 
-require PROJECT_PATH."/model/guestbookModel.php";
+require URL_BASE."/model/guestbookModel.php";
 
 try{
     $connectDB = new PDO(DB_DSN, DB_LOGIN, DB_PWD);
@@ -17,5 +17,5 @@ $messages = selectAllMessage($connectDB);
 
 $connectDB = null;
 
-include PROJECT_PATH."/view/guestbookView.php";
+include URL_BASE."/view/guestbookView.php";
 ?>
