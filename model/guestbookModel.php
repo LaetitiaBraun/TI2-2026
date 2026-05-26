@@ -20,7 +20,7 @@
  * Une requête préparée est utilisée pour éviter les injections SQL
  * Les données sont échappées pour éviter les injections XSS (protection backend)
  */
-function addGuestbook(PDO $db,
+function insertMessage(PDO $db,
                     string $firstname,
                     string $lastname,
                     string $usermail,
@@ -29,8 +29,12 @@ function addGuestbook(PDO $db,
                     string $message
 ): bool
 {
+    $usermail = filter_var($usermail, FILTER_VALIDATE_EMAIL);
+    $message = strip_tags($message);
+    $message = trim($message);
+    $message = htmlspecialchars($message);
     // traitement des données backend (SECURITE)
-    if($mail===false || empty($message))
+    if($usermail===false || empty($message))
     // si pas de données complètes ou ne correspondant pas à nos attentes, on renvoie false
     return false;
     // requête préparée obligatoire !
@@ -38,12 +42,11 @@ function addGuestbook(PDO $db,
         VALUES (:email, :text);
     ");
     // si l'insertion a réussi
-    // on renvoie true
-    // sinon, on renvoie false
     $prepare->bindValue(':email', $usermail);
     $prepare->bindValue(':text', $message);
-
+    // on renvoie true
     $retour = $prepare->execute();
+    // sinon, on renvoie false
     return $retour;
 }
 
@@ -59,10 +62,10 @@ function addGuestbook(PDO $db,
  * venant de la base de données 'ti2web2026' et de la table 'guestbook'
  * Si pas de message, renvoie un tableau vide
  */
-function getAllGuestbook(PDO $db): array
+function selectAllMessage(PDO $db): array
 {
     // try catch
-    $stmt = $connect->query("SELECT * FROM `message` ORDER BY `datemessage` DESC");
+    $stmt = $db->query("SELECT * FROM `message` ORDER BY `datemessage` DESC");
     // si la requête a réussi,
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     // bonne pratique, fermez le curseur
