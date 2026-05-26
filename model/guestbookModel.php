@@ -30,15 +30,21 @@ function addGuestbook(PDO $db,
 ): bool
 {
     // traitement des données backend (SECURITE)
-
+    if($mail===false || empty($message))
     // si pas de données complètes ou ne correspondant pas à nos attentes, on renvoie false
     return false;
     // requête préparée obligatoire !
-
+    $prepare = $db->prepare("INSERT INTO `message` (`usermail`, `message`)
+        VALUES (:email, :text);
+    ");
     // si l'insertion a réussi
     // on renvoie true
     // sinon, on renvoie false
+    $prepare->bindValue(':email', $mail);
+    $prepare->bindValue(':text', $message);
 
+    $retour = $prepare->execute();
+    return $retour;
 }
 
 /***************************
@@ -56,10 +62,13 @@ function addGuestbook(PDO $db,
 function getAllGuestbook(PDO $db): array
 {
     // try catch
+    $stmt = $connect->query("SELECT * FROM `message` ORDER BY `date_message` DESC");
     // si la requête a réussi,
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     // bonne pratique, fermez le curseur
+    $stmt->closeCursor();
     // renvoyer le tableau de(s) message(s)
-    return [];
+    return $result;
 }
 
 /**************************

@@ -142,6 +142,6 @@ echo '<p>$_GET</p>';
 var_dump($_GET);
 ?>
 
-<script src="js/validation.js"></script>
+<script src="js/scipt.js"></script>
 </body>
 </html>
