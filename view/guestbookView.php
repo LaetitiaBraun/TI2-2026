@@ -115,7 +115,7 @@
 ?>
 
             <div class="message_card">
-                <h3>Ecrit par <?= htmlspecialchars($message['message'])?> le 
+                <h3>Ecrit par <?= htmlspecialchars($message['usermail'])?> le 
                 <p><?= htmlspecialchars($message['datemessage']) ?></p>
             </div>
 
