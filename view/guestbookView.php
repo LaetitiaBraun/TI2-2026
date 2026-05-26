@@ -7,13 +7,22 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TI2 | Livre d'or</title>
     <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<h1>TI2 | Livre d'or</h1>
+
+<div class="container">
+    <header>
+        <h1>TI2 | Livre d'or</h1>
+            <div class="header-btns">
+                <button id="btnDark">🌙 Dark Mode</button>
+            </div>
+    </header>
+
 <!-- Formulaire d'ajout d'un message -->
 <h2>Ici le formulaire</h2>
 
@@ -86,34 +95,37 @@
                 <button type="submit" class="submit-btn">Envoyer votre message</button>
         </form>
     </section>
-</main>
 
 <!-- Si pas de message -->
+        <section class="messages-section">
  <?php
- $nbMessage = count($messages);
-    if(empty($nbMessage)):
+            $nbMessage = count($messages);
+                if(empty($nbMessage)):
  ?>
-<h3>Pas encore de message</h3>
+            <h3>Pas encore de message</h3>
 <!-- Si 1 message -->
 <?php
-else:
-    $pluriel = $nbMessage>1 ? "s" :"";
+            else:
+                $pluriel = $nbMessage>1 ? "s" :"";
 ?>
-<h3>Message<?= $pluriel ?> récent<?= $pluriel ?></h3>
+            <h3>Message<?= $pluriel ?> récent<?= $pluriel ?></h3>
 
 <?php
-    foreach($messages as $message):
+            foreach($messages as $message):
 ?>
 
-<div class="message_card">
-    <h3>Ecrit par <?= htmlspecialchars($message['email_message'])?> le 
-    <p><?= htmlspecialchars($message['date_message']) ?></p>
+            <div class="message_card">
+                <h3>Ecrit par <?= htmlspecialchars($message['message'])?> le 
+                <p><?= htmlspecialchars($message['datemessage']) ?></p>
+            </div>
+
+<?php
+            endforeach;
+                endif;
+?>
+        </section>
+    </main>
 </div>
-
-<?php
-    endforeach;
-    endif;
-?>  
 
 <!-- Pagination (BONUS) -->
 

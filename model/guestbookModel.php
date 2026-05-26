@@ -40,7 +40,7 @@ function addGuestbook(PDO $db,
     // si l'insertion a réussi
     // on renvoie true
     // sinon, on renvoie false
-    $prepare->bindValue(':email', $mail);
+    $prepare->bindValue(':email', $usermail);
     $prepare->bindValue(':text', $message);
 
     $retour = $prepare->execute();
@@ -62,7 +62,7 @@ function addGuestbook(PDO $db,
 function getAllGuestbook(PDO $db): array
 {
     // try catch
-    $stmt = $connect->query("SELECT * FROM `message` ORDER BY `date_message` DESC");
+    $stmt = $connect->query("SELECT * FROM `message` ORDER BY `datemessage` DESC");
     // si la requête a réussi,
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     // bonne pratique, fermez le curseur
