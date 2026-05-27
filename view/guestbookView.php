@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="js/jquery-3.7.1.min.js"></script>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TI2 | Livre d'or</title>
     <link rel="icon" type="image/png" href="img/favicon.png">
@@ -154,7 +155,16 @@ var_dump($_GET);*/
 var_dump($connectDB);
 ?>
 
-<script src="js/scipt.js"></script>
-<script src="js/jquery-3.7.1.min.js"></script>
+<script>
+    /* Dark mode */
+    $('#btnDark').click(function () {
+    $('body').toggleClass('dark');
+        if ($('body').hasClass('dark')) {
+    $(this).text('☀️ Light Mode');
+    } else {
+        $(this).text('🌙 Dark Mode');
+    }
+});
+</script>
 </body>
 </html>

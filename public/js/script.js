@@ -1,5 +1,4 @@
 /* Regex */
-
 const regexFirstname = /^*{2,}$/;
 const regexLastname = /^*{2,}$/;
 const regexPhone = /^[0-9]{0,13}{+32}$/;
@@ -42,7 +41,6 @@ $('#inputMessage').on('input', function () {
 });
 
 /* Dark mode */
-
 $('#btnDark').click(function () {
     $('body').toggleClass('dark');
         if ($('body').hasClass('dark')) {

@@ -142,3 +142,16 @@ body.dark .header-btns button {
     color: white;
     border-color: white;
 }
+
+body.dark {
+    background-color: rgba(0, 0, 0, 0.884);
+    color: white;
+}
+
+body.dark .form-section{
+    background-color: grey;
+}
+
+body.dark .submit-btn:hover {
+    color: black;
+}
