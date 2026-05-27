@@ -41,24 +41,6 @@ $('#inputMessage').on('input', function () {
     validerChamp($(this).val(), regexMessage, 'errMessage', '⚠️ Message invalide (Au moins 10 caractères)');
 });
 
-$('#btnSubmit').click(function () {
-    const okFirstname = validerChamp($('#inputFirstname').val(), regexFirstname, 'errFirstname', '⚠️ Firstname invalide (Au moins 2 caractères)');
-    const okLastname = validerChamp($('#inputLastname').val(), regexLastname, 'errLastname', '⚠️ Lastname invalide (Au moins 2 caractères)');
-    const okPhone = validerChamp($('#inputPhone').val(), regexPhone, 'errPhone', '⚠️ Phone invalide (Ex : 0470123456)');
-    const okPostcode = validerChamp($('#inputPostcode').val(), regexPostcode, 'errPostcode', '⚠️ Postcode invalide (Au moins 4 chiffres, entre 1000 et 9999)');
-    const okUsermail = validerChamp($('#inputUsermail').val(), regexUsermail, 'errUsermail', '⚠️ Usermail invalide (Ex : Jeandupont@gmail.com)');
-    const okMessage = validerChamp($('#inputMessage').val(), regexMessage, 'errMessage', '⚠️ Message invalide (Au moins 10 caractères)');
-
-    if (okFirstname && okLastname && okPhone && okPostcode && okUsermail && okMessage) {
-        $('#formSuccess').slideDown(400, function () {
-            setTimeout(function () {
-                $('#formSuccess').slideUp(400);
-                $('#inputFirstname, #inputLastname, #inputPhone, #inputPostcode, #inputUsermail, #inputMessage').val('');
-            }, 3000);
-        });
-    }
-});
-
 /* Dark mode */
 
 $('#btnDark').click(function () {
