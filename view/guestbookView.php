@@ -32,7 +32,7 @@
     if(isset($insert)):
         if($insert===false):
 ?>
-    <div class="echec-message">Echec lors de l'insertion, veuillez ré éssayer
+    <div class="echec-message">Problème lors de l'envoi du message
         <script> setTimeout(
             function() {
                 window.location.href="./";
@@ -45,7 +45,7 @@
     else:
 ?>
 
-    <div class="reussite-message">Merci pour votre message, vous allez être redirigé
+    <div class="reussite-message">Merci pour votre nouveau message
         <script> setTimeout(
             function() {
                 window.location.href="./";
