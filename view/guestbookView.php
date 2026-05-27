@@ -12,7 +12,7 @@
     <title>TI2 | Livre d'or</title>
     <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="stylesheet" href="css/style.css">
-</head>
+</head id="top">
 <body>
 
 <div class="container">
@@ -148,6 +148,8 @@ echo '<p>$_GET</p>';
 var_dump($_GET);
 var_dump($connectDB);*/
 ?>
+
+<a href="#top" class="btn-top">⬆</a>
 
 <script>
     /* Dark mode */
