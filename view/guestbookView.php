@@ -73,6 +73,11 @@
             </div>
 
             <div class="form-group">
+                <label for="usermail">Votre email</label>
+                <input type="email" id="usermail" name="usermail" placeholder="Ex : Jeandupont@gmail.com">
+            </div>
+
+            <div class="form-group">
                 <label for="phone">Votre tel</label>
                 <input type="text" id="phone" name="phone" placeholder="Ex : 0464 28 48 50">
             </div>
@@ -80,11 +85,6 @@
             <div class="form-group">
                 <label for="postcode">Votre code postal</label>
                 <input type="text" id="postcode" name="postcode" placeholder="Ex : 1190">
-            </div>
-
-            <div class="form-group">
-                <label for="usermail">Votre email</label>
-                <input type="email" id="usermail" name="usermail" placeholder="Ex : Jeandupont@gmail.com">
             </div>
                    
             <div class="form-group">
@@ -147,11 +147,12 @@ etc ...
 <!-- Pagination (BONUS) -->
 <?php
 // À commenter quand on a fini de tester
-echo "<h3>Nos var_dump() pour le débugage</h3>";
-echo '<p>$_POST</p>';
+/*echo "<h3>Nos var_dump() pour le débugage</h3>";
+echo '<p>$_POST</p>';*/
 var_dump($_POST);
-echo '<p>$_GET</p>';
-var_dump($_GET);
+/*echo '<p>$_GET</p>';
+var_dump($_GET);*/
+var_dump($connectDB);
 ?>
 
 <script src="js/scipt.js"></script>

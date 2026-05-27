@@ -61,9 +61,9 @@ function insertMessage(PDO $db,
     $prepare->bindValue(':text', $postcode);
     $prepare->bindValue(':text', $message);
     // on renvoie true
-    $retour = $prepare->execute();
+    $insert = $prepare->execute();
     // sinon, on renvoie false
-    return $retour;
+    return $insert;
 }
 
 /***************************
