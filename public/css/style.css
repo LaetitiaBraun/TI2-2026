@@ -23,7 +23,7 @@ body {
 }
 
 .btn-top:hover {
-    background-color: darkred;
+    background-color: rgba(0, 0, 0, 0.884);
     color: white;
     transform: scale(1.1);
 }
@@ -180,4 +180,13 @@ body.dark .submit-btn:hover {
 
 body.dark .message_card {
     background-color: grey;
+}
+
+body.dark .btn-top {
+    background-color: grey;
+}
+
+body.dark .btn-top:hover {
+    background-color:white;
+    color: black;
 }
