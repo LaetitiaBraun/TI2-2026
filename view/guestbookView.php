@@ -121,8 +121,9 @@
 ?>
 
             <div class="message_card">
-                <h3>Ecrit par <?= htmlspecialchars($message['usermail'])?> le 
-                <p><?= htmlspecialchars($message['datemessage']) ?></p>
+                <h3>Ecrit par <?= htmlspecialchars($message['usermail'])?> 
+                <p>le <?= htmlspecialchars($message['datemessage']) ?></p>
+                <p>Message : <?= htmlspecialchars($message['message']) ?></p>
             </div>
 
 <?php
@@ -136,29 +137,16 @@
 <!-- Pagination (BONUS) -->
 
 <!-- Liste des messages -->
-<ul>
-    <li>
-        <p><strong>firstname lastname</strong></p>
-        <p><em>datemessage</em></p>
-        <p>message</p>
-    </li>
-    <!-- Autres messages -->
-    <li>
-        <p><strong>firstname lastname</strong></p>
-        <p><em>datemessage</em></p>
-        <p>message</p>
-    </li>
-</ul>
-etc ...
+
 <!-- Pagination (BONUS) -->
 <?php
 // À commenter quand on a fini de tester
 /*echo "<h3>Nos var_dump() pour le débugage</h3>";
-echo '<p>$_POST</p>';*/
+echo '<p>$_POST</p>';
 var_dump($_POST);
-/*echo '<p>$_GET</p>';
-var_dump($_GET);*/
-var_dump($connectDB);
+echo '<p>$_GET</p>';
+var_dump($_GET);
+var_dump($connectDB);*/
 ?>
 
 <script>
@@ -171,7 +159,6 @@ var_dump($connectDB);
         $(this).text('🌙 Dark Mode');
     }
 });
-
 </script>
 </body>
 </html>
