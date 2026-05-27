@@ -24,16 +24,16 @@ $('#inputLastname').on('input', function () {
     validerChamp($(this).val(), regexLastname, 'errLastname', '⚠️ Lastname invalide (Au moins 2 caractères)');
 });
 
+$('#inputUsermail').on('input', function () {
+    validerChamp($(this).val(), regexUsermail, 'errUsermail', '⚠️ Usermail invalide (Ex : Jeandupont@gmail.com)');
+});
+
 $('#inputPhone').on('input', function () {
     validerChamp($(this).val(), regexPhone, 'errPhone', '⚠️ Phone invalide (Ex : 0470123456)');
 });
 
 $('#inputPostcode').on('input', function () {
     validerChamp($(this).val(), regexPostcode, 'errPostcode', '⚠️ Postcode invalide (Au moins 4 chiffres, entre 1000 et 9999)');
-});
-
-$('#inputUsermail').on('input', function () {
-    validerChamp($(this).val(), regexUsermail, 'errUsermail', '⚠️ Usermail invalide (Ex : Jeandupont@gmail.com)');
 });
 
 $('#inputMessage').on('input', function () {

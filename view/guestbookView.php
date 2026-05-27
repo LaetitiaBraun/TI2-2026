@@ -66,31 +66,37 @@
                 <label for="firstname">Votre prénom</label>
                 <input type="text" id="firstname" name="firstname" placeholder="Votre prénom">
             </div>
+            <div id="inputFirstname"></div>
 
             <div class="form-group">
                 <label for="lastname">Votre nom</label>
                 <input type="text" id="lastname" name="lastname" placeholder="Votre nom">
             </div>
+            <div id="inputLastname"></div>
 
             <div class="form-group">
                 <label for="usermail">Votre email</label>
                 <input type="email" id="usermail" name="usermail" placeholder="Ex : Jeandupont@gmail.com">
             </div>
+            <div id="inputUsermail"></div>
 
             <div class="form-group">
                 <label for="phone">Votre tel</label>
                 <input type="text" id="phone" name="phone" placeholder="Ex : 0464 28 48 50">
             </div>
+            <div id="inputPhone"></div>
 
             <div class="form-group">
                 <label for="postcode">Votre code postal</label>
                 <input type="text" id="postcode" name="postcode" placeholder="Ex : 1190">
             </div>
+            <div id="inputPostcode"></div>
                    
             <div class="form-group">
                 <label for="message">Votre message</label>
                 <textarea type="text" id="message" name="message" rows="4" placeholder="Votre message"></textarea>
             </div>
+            <div id="inputMessage"></div>
                    
                 <button type="submit" class="submit-btn">Envoyer votre message</button>
         </form>
@@ -165,6 +171,7 @@ var_dump($connectDB);
         $(this).text('🌙 Dark Mode');
     }
 });
+
 </script>
 </body>
 </html>
