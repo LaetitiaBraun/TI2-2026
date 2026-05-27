@@ -51,15 +51,15 @@ function insertMessage(PDO $db,
     return false;
     // requête préparée obligatoire !
     $prepare = $db->prepare("INSERT INTO `guestbook` (`firstname`, `lastname`,`usermail`, `phone`, `postcode`,`message`)
-        VALUES (:text, :text, :email, :text, :text, :text);
+        VALUES (:firstname, :lastname, :usermail, :phone, :postcode, :message);
     ");
     // si l'insertion a réussi
-    $prepare->bindValue(':text', $firstname);
-    $prepare->bindValue(':text', $lastname);
-    $prepare->bindValue(':email', $usermail);
-    $prepare->bindValue(':text', $phone);
-    $prepare->bindValue(':text', $postcode);
-    $prepare->bindValue(':text', $message);
+    $prepare->bindValue(':firstname', $firstname);
+    $prepare->bindValue(':lastname', $lastname);
+    $prepare->bindValue(':usermail', $usermail);
+    $prepare->bindValue(':phone', $phone);
+    $prepare->bindValue(':postcode', $postcode);
+    $prepare->bindValue(':message', $message);
     // on renvoie true
     $insert = $prepare->execute();
     // sinon, on renvoie false
