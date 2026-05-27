@@ -84,12 +84,12 @@
 
             <div class="form-group">
                 <label for="usermail">Votre email</label>
-                <input type="text" id="usermail" name="usermail" placeholder="Ex : Jeandupont@gmail.com">
+                <input type="email" id="usermail" name="usermail" placeholder="Ex : Jeandupont@gmail.com">
             </div>
                    
             <div class="form-group">
                 <label for="message">Votre message</label>
-                <textarea id="message" name="message" rows="4" placeholder="Votre message"></textarea>
+                <textarea type="text" id="message" name="message" rows="4" placeholder="Votre message"></textarea>
             </div>
                    
                 <button type="submit" class="submit-btn">Envoyer votre message</button>
