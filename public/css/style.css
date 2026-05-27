@@ -184,6 +184,7 @@ body.dark .message_card {
 
 body.dark .btn-top {
     background-color: grey;
+    color: white;
 }
 
 body.dark .btn-top:hover {
