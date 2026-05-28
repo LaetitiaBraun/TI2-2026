@@ -23,43 +23,23 @@
             </div>
     </header>
 
-<!-- Formulaire d'ajout d'un message -->
-<h2>Ici le formulaire</h2>
-
 <main>
 
-<?php
-    if(isset($insert)):
-        if($insert===false):
-?>
+<?php if(isset($insert)): if($insert===false): ?>
     <div class="echec-message">Problème lors de l'envoi du message
-        <script> setTimeout(
-            function() {
-                window.location.href="./";
-            }, 3000
-        );
-        </script>
+        <script> setTimeout(function() { window.location.href="./"; }, 3000); </script>
     </div>
-
-<?php
-    else:
-?>
-
+<?php else: ?>
     <div class="reussite-message">Merci pour votre nouveau message
-        <script> setTimeout(
-            function() {
-                window.location.href="./";
-            }, 3000
-        );
-        </script>
+        <script> setTimeout(function() { window.location.href="./"; }, 3000); </script>
     </div>
+<?php endif; endif; ?>
 
-<?php   
-    endif;
-        endif;
-?>
+<div class="form-wrapper">
 
     <section class="form-section">
+        <!-- Formulaire d'ajout d'un message -->
+        <h2>Ici le formulaire</h2>
         <form id="guestbook-form" method="POST">
 
             <div class="form-group">
@@ -91,50 +71,57 @@
                 <input type="text" id="postcode" name="postcode" placeholder="Ex : 1190">
             </div>
             <div id="inputPostcode"></div>
-                   
+
             <div class="form-group">
                 <label for="message">Votre message</label>
                 <textarea type="text" id="message" name="message" rows="4" placeholder="Votre message"></textarea>
             </div>
             <div id="inputMessage"></div>
-                   
-                <button type="submit" class="submit-btn">Envoyer votre message</button>
+
+            <button type="submit" class="submit-btn">Envoyer votre message</button>
         </form>
     </section>
 
 <!-- Si pas de message -->
+    <aside class="form-aside">
         <section class="messages-section">
- <?php
+<?php
             $nbMessage = count($messages);
-                if(empty($nbMessage)):
- ?>
-            <h3>Pas encore de message</h3>
+            if(empty($nbMessage)):
+?>
+            <h3>Vous n'avez aucun message</h3>
 <!-- Si 1 message -->
 <?php
-            else:
-                $pluriel = $nbMessage>1 ? "s" :"";
+            elseif($nbMessage === 1):
 ?>
-            <h3>Message<?= $pluriel ?> récent<?= $pluriel ?></h3>
-
+            <h3>Vous avez 1 message</h3>
 <?php
-            foreach($messages as $message):
+            else:
 ?>
+            <h3>Vous avez <?= $nbMessage ?> messages</h3>
+
+<?php endif; ?>
+
+<?php if(!empty($nbMessage)): foreach($messages as $message): ?>
 
             <div class="message_card">
-                <h3>Ecrit par <?= htmlspecialchars($message['usermail'])?> 
-                <p>le <?= htmlspecialchars($message['datemessage']) ?></p>
+                <h3>Ecrit par <?= htmlspecialchars($message['usermail']) ?></h3>
+                <p>le <?= date('d-m-Y', strtotime($message['datemessage'])) ?></p>
                 <p>Message : <?= htmlspecialchars($message['message']) ?></p>
             </div>
 
-<?php
-            endforeach;
-                endif;
-?>
-        </section>
-    </main>
-</div>
+<?php endforeach; endif; ?>
 
 <!-- Pagination (BONUS) -->
+<?php if(!empty($paginationHTML)) echo $paginationHTML; ?>
+
+        </section>
+    </aside>
+
+</div>
+
+    </main>
+</div>
 
 <!-- Liste des messages -->
 
@@ -151,16 +138,6 @@ var_dump($connectDB);*/
 
 <a href="#top" class="btn-top">⬆</a>
 
-<script>
-    /* Dark mode */
-    $('#btnDark').click(function () {
-    $('body').toggleClass('dark');
-        if ($('body').hasClass('dark')) {
-    $(this).text('☀️ Light Mode');
-    } else {
-        $(this).text('🌙 Dark Mode');
-    }
-});
-</script>
+<script src="js/script.js"></script>
 </body>
 </html>
