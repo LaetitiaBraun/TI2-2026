@@ -81,3 +81,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+/* Nombre de caractères maximum message */
+$("#message").on("input", function () {
+  const len = $(this).val().length;
+  $("#charCount").text(len);
+  if (len >= 280) {
+    $("#charCount").css("color", "red");
+  } else {
+    $("#charCount").css("color", "green");
+  }
+});

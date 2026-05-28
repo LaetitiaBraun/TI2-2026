@@ -74,15 +74,16 @@
 
             <div class="form-group">
                 <label for="message">Votre message</label>
-                <textarea type="text" id="message" name="message" rows="4" placeholder="Votre message" required maxlength="150"></textarea>
+                <textarea type="text" id="message" name="message" rows="4" placeholder="Votre message" required maxlength="300"></textarea>
             </div>
             <div id="inputMessage"></div>
+            <p class="char-count"><span id="charCount">0</span> / 300 caractères</p>
 
             <div class="box-accord">
-                <input type="checkbox" name="accord" id="case">
+                <input type="checkbox" name="accord" id="case" required>
                 <label>Acceptez-vous que vos données soient stockées ?</label>
             </div>
-            
+
             <div id="errorCheckbox" style="display:none; color:red; font-size:14px;">
                 ⚠️ Vous devez cocher la case avant d'envoyer le formulaire.
             </div>
