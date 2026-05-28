@@ -152,6 +152,11 @@ textarea:focus {
     margin-top: 2rem;
 }
 
+#errorCheckbox {
+    margin-top: -15px;
+    margin-bottom: 10px;
+}
+
 #case {
     margin-right: 10px;
     margin-top: -3px;

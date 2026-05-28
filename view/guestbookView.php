@@ -82,6 +82,10 @@
                 <input type="checkbox" name="accord" id="case">
                 <label>Acceptez-vous que vos données soient stockées ?</label>
             </div>
+            
+            <div id="errorCheckbox" style="display:none; color:red; font-size:14px;">
+                ⚠️ Vous devez cocher la case avant d'envoyer le formulaire.
+            </div>
 
             <button type="submit" class="submit-btn">Envoyer votre message</button>
         </form>
@@ -136,5 +140,6 @@ var_dump($connectDB);*/
 <a href="#top" class="btn-top">⬆</a>
 
 <script src="js/script.js"></script>
+
 </body>
 </html>

@@ -68,3 +68,16 @@ $('#btnDark').click(function () {
         localStorage.setItem('darkMode', 'false');
     }
 });
+
+/* Case à cocher */
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('guestbook-form').addEventListener('submit', function(e) {
+        if (!document.getElementById('case').checked) {
+            e.preventDefault();
+
+            document.getElementById('errorCheckbox').style.display = 'block';
+        } else {
+            document.getElementById('errorCheckbox').style.display = 'none';
+        }
+    });
+});
