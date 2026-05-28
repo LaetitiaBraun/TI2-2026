@@ -102,10 +102,12 @@ function selectAllMessage(PDO $db): array
  */
 function getNbTotalGuestbook(PDO $db): int
 {
-
+    $stmt = $db->query("SELECT COUNT(*) FROM `guestbook`");
+    $count = (int) $stmt->fetchColumn();
     // bonne pratique, fermez le curseur,
+    $stmt->closeCursor();
     // renvoyez le nombre total de messages
-    return 0;
+    return $count;
 
 }
 // SELECTION de messages dans le livre d'or par ordre de date croissante
@@ -122,13 +124,20 @@ function getNbTotalGuestbook(PDO $db): int
  */
 function getGuestbookPagination(PDO $db, int $pageActu=1, int $limit=5): array
 {
+    $offset = ($pageActu - 1) * $limit;
     // Requête préparée obligatoire !
     // Le $offset et le $limit sont des entiers, il faut donc les passer
     // en paramètres de la requête préparée en tant qu'entiers !
+    $prepare = $db->prepare("SELECT * FROM `guestbook` ORDER BY `datemessage` DESC LIMIT :limit OFFSET :offset");
+    $prepare->bindValue(':limit', $limit, PDO::PARAM_INT);
+    $prepare->bindValue(':offset', $offset, PDO::PARAM_INT);
     // si la requête a réussi,
+    $prepare->execute();
+    $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
     // bonne pratique, fermez le curseur
+    $prepare->closeCursor();
     // renvoyer le tableau de(s) message(s) (vide si pas de résultats)
-    return [];
+    return $result;
 }
 
 # Pour afficher la pagination dans la vue
@@ -149,31 +158,40 @@ function pagination(int $nbtotalMessage, string $url="./?", string $get="page", 
     if ($nbtotalMessage === 0) return "";
     $nbPages = ceil($nbtotalMessage / $perPage);
     if ($nbPages == 1) return "";
-    $sortie .= "<p>";
+    $sortie .= "<p class='pagination'>";
     for ($i = 1; $i <= $nbPages; $i++) {
         if ($i === 1) {
             if ($pageActu === 1) {
-                $sortie .= "<< < 1 |";
+                $sortie .= "<span class='pagination-current'>&lt;&lt;</span>";
+                $sortie .= "<span class='pagination-current'>&lt;</span>";
+                $sortie .= "<span class='pagination-current'>1</span>";
             } elseif ($pageActu === 2) {
-                $sortie .= " <a href='$url'><<</a> <a href='$url'><</a> <a href='$url'>1</a> |";
+                $sortie .= "<a href='$url'>&lt;&lt;</a>";
+                $sortie .= "<a href='$url'>&lt;</a>";
+                $sortie .= "<a href='$url'>1</a>";
             } else {
-                $sortie .= " <a href='$url'><<</a> <a href='$url&$get=" . ($pageActu - 1) . "'><</a> <a href='$url'>1</a> |";
+                $sortie .= "<a href='$url'>&lt;&lt;</a>";
+                $sortie .= "<a href='$url&$get=" . ($pageActu - 1) . "'>&lt;</a>";
+                $sortie .= "<a href='$url'>1</a>";
             }
         } elseif ($i < $nbPages) {
             if ($i === $pageActu) {
-                $sortie .= "  $i |";
+                $sortie .= "<span class='pagination-current'>$i</span>";
             } else {
-                $sortie .= "  <a href='$url&$get=$i'>$i</a> |";
+                $sortie .= "<a href='$url&$get=$i'>$i</a>";
             }
         } else {
             if ($pageActu >= $nbPages) {
-                $sortie .= "  $nbPages > >>";
+                $sortie .= "<span class='pagination-current'>$nbPages</span>";
+                $sortie .= "<span class='pagination-current'>&gt;</span>";
+                $sortie .= "<span class='pagination-current'>&gt;&gt;</span>";
             } else {
-                $sortie .= "  <a href='$url&$get=$nbPages'>$nbPages</a> <a href='$url&$get=" . ($pageActu + 1) . "'>></a> <a href='$url&$get=$nbPages'>>></a>";
+                $sortie .= "<a href='$url&$get=$nbPages'>$nbPages</a>";
+                $sortie .= "<a href='$url&$get=" . ($pageActu + 1) . "'>&gt;</a>";
+                $sortie .= "<a href='$url&$get=$nbPages'>&gt;&gt;</a>";
             }
         }
     }
     $sortie .= "</p>";
     return $sortie;
-
 }
