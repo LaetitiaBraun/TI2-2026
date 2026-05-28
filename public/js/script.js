@@ -1,51 +1,70 @@
 /* Regex */
-const regexFirstname = /^*{2,}$/;
-const regexLastname = /^*{2,}$/;
-const regexPhone = /^[0-9]{0,13}{+32}$/;
-const regexPostcode = /^{4,}{1000,9999}$/;
+const regexFirstname = /^[a-zA-ZÀ-ÿ\-']{2,}$/;
+const regexLastname = /^[a-zA-ZÀ-ÿ\-']{2,}$/;
+const regexPhone = /^(0|\+32|0032)[1-9][0-9]{7,8}$/;
+const regexPostcode = /^[1-9][0-9]{3}$/;
 const regexUsermail = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
-const regexMessage = /^*{10,}$/;
+const regexMessage = /^[\s\S]{10,}$/;
 
-function validerChamp(valeur, regex, idErreur, messageErreur) {
-  if (regex.test(valeur.trim())) {
-    $('#' + idErreur).text('').hide();
-      return true;
-  } else {
-    $('#' + idErreur).text(messageErreur).show();
-      return false;
-  }
+function validerChamp(valeur, regex, idErreur, messageErreur, idAside) {
+    if (regex.test(valeur.trim())) {
+        $('#' + idErreur).text('').hide();
+        if (idAside) $('#' + idAside).removeClass('aside-error').addClass('aside-ok');
+        return true;
+    } else {
+        $('#' + idErreur).text(messageErreur).show();
+        if (idAside) $('#' + idAside).removeClass('aside-ok').addClass('aside-error');
+        return false;
+    }
 }
 
-$('#inputFirstname').on('input', function () {
-    validerChamp($(this).val(), regexFirstname, 'errFirstname', '⚠️ Firstname invalide (Au moins 2 caractères)');
+$('#firstname').on('input', function () {
+    validerChamp($(this).val(), regexFirstname, 'inputFirstname', '⚠️ Firstname invalide (Au moins 2 caractères)', 'asideFirstname');
 });
 
-$('#inputLastname').on('input', function () {
-    validerChamp($(this).val(), regexLastname, 'errLastname', '⚠️ Lastname invalide (Au moins 2 caractères)');
+$('#lastname').on('input', function () {
+    validerChamp($(this).val(), regexLastname, 'inputLastname', '⚠️ Lastname invalide (Au moins 2 caractères)', 'asideLastname');
 });
 
-$('#inputUsermail').on('input', function () {
-    validerChamp($(this).val(), regexUsermail, 'errUsermail', '⚠️ Usermail invalide (Ex : Jeandupont@gmail.com)');
+$('#usermail').on('input', function () {
+    validerChamp($(this).val(), regexUsermail, 'inputUsermail', '⚠️ Usermail invalide (Ex : Jeandupont@gmail.com)', 'asideUsermail');
 });
 
-$('#inputPhone').on('input', function () {
-    validerChamp($(this).val(), regexPhone, 'errPhone', '⚠️ Phone invalide (Ex : 0470123456)');
+$('#phone').on('input', function () {
+    const cleaned = $(this).val().replace(/[\s\-\.]/g, '');
+    validerChamp(cleaned, regexPhone, 'inputPhone', '⚠️ Phone invalide (Ex : 0470123456)', 'asidePhone');
 });
 
-$('#inputPostcode').on('input', function () {
-    validerChamp($(this).val(), regexPostcode, 'errPostcode', '⚠️ Postcode invalide (Au moins 4 chiffres, entre 1000 et 9999)');
+$('#postcode').on('input', function () {
+    const val = $(this).val().trim();
+    const num = parseInt(val, 10);
+    const ok = regexPostcode.test(val) && num >= 1000 && num <= 9999;
+    if (ok) {
+        $('#inputPostcode').text('').hide();
+        $('#asidePostcode').removeClass('aside-error').addClass('aside-ok');
+    } else {
+        $('#inputPostcode').text('⚠️ Postcode invalide (Au moins 4 chiffres, entre 1000 et 9999)').show();
+        $('#asidePostcode').removeClass('aside-ok').addClass('aside-error');
+    }
 });
 
-$('#inputMessage').on('input', function () {
-    validerChamp($(this).val(), regexMessage, 'errMessage', '⚠️ Message invalide (Au moins 10 caractères)');
+$('#message').on('input', function () {
+    validerChamp($(this).val(), regexMessage, 'inputMessage', '⚠️ Message invalide (Au moins 10 caractères)', 'asideMessage');
 });
 
 /* Dark mode */
+if (localStorage.getItem('darkMode') === 'true') {
+    $('body').addClass('dark');
+    $('#btnDark').text('☀️ Light Mode');
+}
+
 $('#btnDark').click(function () {
     $('body').toggleClass('dark');
-        if ($('body').hasClass('dark')) {
-    $(this).text('☀️ Light Mode');
+    if ($('body').hasClass('dark')) {
+        $(this).text('☀️ Light Mode');
+        localStorage.setItem('darkMode', 'true');
     } else {
         $(this).text('🌙 Dark Mode');
+        localStorage.setItem('darkMode', 'false');
     }
 });
