@@ -131,6 +131,16 @@ textarea:focus {
     text-align: left;
 }
 
+#inputFirstname,
+#inputLastname,
+#inputUsermail,
+#inputPhone,
+#inputPostcode,
+#inputMessage{
+    margin-top: -15px;
+    margin-bottom: 10px;
+}
+
 /* Dark mode BTN */
 .header {
     background-color: black;
