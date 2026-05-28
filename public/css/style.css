@@ -173,9 +173,17 @@ body.dark .header {
 }
 
 body.dark .header-btns button {
-    background-color: transparent;
     color: white;
-    border-color: white;
+    padding: 4px 10px;
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+body.dark .header-btns button:hover {
+    background: rgba(255, 255, 255, 0.15);
+    cursor: pointer;
 }
 
 body.dark button {
