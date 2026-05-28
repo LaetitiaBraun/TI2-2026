@@ -23,7 +23,7 @@ body {
 }
 
 .btn-top:hover {
-    background-color: rgba(0, 0, 0, 0.884);
+    background-color: burlywood;
     color: white;
     transform: scale(1.1);
 }
@@ -34,9 +34,8 @@ body {
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 6px 4px 6px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 2rem;
 }
- 
+
 .form-group {
     margin-bottom: 1.5rem;
 }
@@ -46,30 +45,28 @@ label {
     margin-bottom: 0.5rem;
     font-weight: 500;
 }
- 
+
 input[type="text"],
 input[type="email"],
 textarea {
     width: 100%;
     padding: 0.75rem;
-    border: 1px solid var(--border-color);
     border-radius: 8px;
     font-family: inherit;
     font-size: 1rem;
     transition: border-color 0.2s;
     box-shadow: 6px 4px 6px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color)
 }
- 
+
 input[type="text"]:focus,
 input[type="email"]:focus,
 textarea:focus {
     outline: none;
-    border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
 }
- 
+
 .submit-btn {
-    border: 1px solid var(--border-color);
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
     font-weight: 600;
@@ -77,13 +74,14 @@ textarea:focus {
     cursor: pointer;
     transition: background-color 0.2s;
     box-shadow: 6px 4px 6px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color)
 }
- 
+
 .submit-btn:hover {
     background-color: rgb(224, 220, 220);
 }
 
-.reussite-message{
+.reussite-message {
     background-color: green;
     color: white;
     padding: 1.5rem;
@@ -91,14 +89,14 @@ textarea:focus {
     margin-bottom: 1rem;
 }
 
-.echec-message{
+.echec-message {
     background-color: red;
     color: white;
     padding: 1.5rem;
     border-radius: 12px;
     margin-bottom: 1rem;
 }
- 
+
 .message_card {
     background-color: antiquewhite;
     padding: 2rem;
@@ -113,11 +111,27 @@ textarea:focus {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-/* BTN Dark mode */
+.form-wrapper {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.form-wrapper .form-section {
+    flex: 1;
+}
+
+.form-aside {
+    flex: 1;
+    text-align: left;
+}
+
+/* Dark mode BTN */
 .header {
     background-color: black;
     color: white;
@@ -149,14 +163,13 @@ textarea:focus {
 }
 
 /* Dark mode */
-body.dark .header {
-    background-color: #333;
+body.dark {
+    background-color: rgba(0, 0, 0, 0.884);
+    color: white;
 }
 
-body.dark button {
-    background-color: #444;
-    color: #eee;
-    border-color: #666;
+body.dark .header {
+    background-color: #333;
 }
 
 body.dark .header-btns button {
@@ -165,12 +178,13 @@ body.dark .header-btns button {
     border-color: white;
 }
 
-body.dark {
-    background-color: rgba(0, 0, 0, 0.884);
-    color: white;
+body.dark button {
+    background-color: #444;
+    color: #eee;
+    border-color: #666;
 }
 
-body.dark .form-section{
+body.dark .form-section {
     background-color: grey;
 }
 
@@ -188,6 +202,80 @@ body.dark .btn-top {
 }
 
 body.dark .btn-top:hover {
-    background-color:white;
+    background-color: white;
     color: black;
+}
+
+body.dark .pagination {
+    background-color: grey;
+    color: white;
+}
+
+body.dark .pagination a {
+    background-color: #555;
+    color: white;
+}
+
+body.dark .pagination a:hover {
+    background-color: #777;
+}
+
+body.dark .pagination-current {
+    background-color: #888;
+    color: white;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 1.5rem auto;
+    padding: 0.75rem 1.2rem;
+    background-color: antiquewhite;
+    border-radius: 12px;
+    box-shadow: 6px 4px 6px 4px rgba(0, 0, 0, 0.1);
+    font-family: 'Times New Roman', Times, sans-serif;
+    font-size: 1rem;
+    color: black;
+}
+
+.pagination a,
+.pagination-current {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 34px;
+    height: 34px;
+    padding: 0 0.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.pagination a {
+    background-color: bisque;
+    color: black;
+    text-decoration: none;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.pagination a:hover {
+    background-color: rgba(0, 0, 0, 0.15);
+    transform: scale(1.1);
+}
+
+.pagination-current {
+    background-color: rgba(0, 0, 0, 0.08);
+    color: rgba(0, 0, 0, 0.35);
+    cursor: default;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+    .form-wrapper {
+        flex-direction: column;
+    }
 }
