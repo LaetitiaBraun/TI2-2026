@@ -29,26 +29,25 @@ function insertMessage(PDO $db,
                     string $message
 ): bool
 {
-    $firstname = strip_tags($firstname);
-    $firstname = trim($firstname);
-    $firstname = htmlspecialchars($firstname);
-    $lastname = strip_tags($lastname);
-    $lastname = trim($lastname);
-    $lastname = htmlspecialchars($lastname);
-    $usermail = filter_var($usermail, FILTER_VALIDATE_EMAIL);
-    $phone = strip_tags($phone);
-    $phone = trim($phone);
-    $phone = htmlspecialchars($phone);
-    $postcode = strip_tags($postcode);
+    $firstname = htmlspecialchars(trim(strip_tags($firstname)));
+   if (empty($firstname) || strlen($firstname) > 100) return false;
+ 
+   $lastname = htmlspecialchars(trim(strip_tags($lastname)));
+   if (empty($lastname) || strlen($lastname) > 100) return false;
+ 
+   $usermail = filter_var($usermail, FILTER_VALIDATE_EMAIL);
+   if (empty($usermail) || strlen($usermail) > 200) return false;
+ 
+   $phone = trim($phone);
+    if (!preg_match('/^(\+32|0032|0)4\d{8}$/', $phone) || strlen($phone) > 20) return false;
+ 
     $postcode = trim($postcode);
-    $postcode = htmlspecialchars($postcode);
-    $message = strip_tags($message);
-    $message = trim($message);
-    $message = htmlspecialchars($message);
+    if (!preg_match('/^\d{4}$/', $postcode)) return false;
+ 
+    $message = htmlspecialchars(trim(strip_tags($message)));
+    if (empty($message) || strlen($message) > 500) return false;
     // traitement des données backend (SECURITE)
-    if($usermail===false || empty($message))
     // si pas de données complètes ou ne correspondant pas à nos attentes, on renvoie false
-    return false;
     // requête préparée obligatoire !
     $prepare = $db->prepare("INSERT INTO `guestbook` (`firstname`, `lastname`,`usermail`, `phone`, `postcode`,`message`)
         VALUES (:firstname, :lastname, :usermail, :phone, :postcode, :message);
