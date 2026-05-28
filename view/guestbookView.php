@@ -115,14 +115,6 @@
 <!-- Pagination (BONUS) -->
 <?php if(!empty($paginationHTML)) echo $paginationHTML; ?>
 
-        </section>
-    </aside>
-
-</div>
-
-    </main>
-</div>
-
 <!-- Liste des messages -->
 
 <!-- Pagination (BONUS) -->
