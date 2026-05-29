@@ -89,6 +89,6 @@ $("#message").on("input", function () {
   if (len >= 280) {
     $("#charCount").css("color", "red");
   } else {
-    $("#charCount").css("color", "green");
+    $("#charCount").css("color", "lightgreen");
   }
 });
