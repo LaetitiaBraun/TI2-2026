@@ -33,7 +33,7 @@ body {
 .header h1 {
     font-size: 1.4rem;
     margin: 0;
-    color: antiquewhite;
+    color: white;
     letter-spacing: 1px;
 }
 
@@ -218,8 +218,8 @@ textarea:focus {
 .header-btns button {
     padding: 8px 16px;
     background: transparent;
-    color: antiquewhite;
-    border: 2px solid antiquewhite;
+    color: white;
+    border: 2px solid white;
     border-radius: 20px;
     font-size: 0.85rem;
     cursor: pointer;
@@ -228,7 +228,7 @@ textarea:focus {
 }
 
 .header-btns button:hover {
-    background: antiquewhite;
+    background-color: bisque;
     color: #3b2a1a;
 }
 
@@ -239,22 +239,22 @@ body.dark {
 }
 
 body.dark .header {
-    background-color: #111;
+    background-color: bisque;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
 }
 
 body.dark .header h1 {
-    color: #f5deb3;
+    color: black;
 }
 
 body.dark .header-btns button {
-    color: #f5deb3;
-    border-color: #f5deb3;
+    color: black;
+    border-color: black;
 }
 
 body.dark .header-btns button:hover {
-    background: #f5deb3;
-    color: #111;
+    background-color: #1c1c1e;
+    color: white;
 }
 
 body.dark .form-section {
