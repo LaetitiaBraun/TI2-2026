@@ -6,6 +6,37 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
+.header {
+    background-color: #3b2a1a;
+    color: antiquewhite;
+    height: 70px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-icon {
+    font-size: 1.6rem;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    margin: 0;
+    color: antiquewhite;
+    letter-spacing: 1px;
+}
+
 .btn-top {
     position: fixed;
     bottom: 30px;
@@ -178,37 +209,6 @@ textarea:focus {
 }
 
 /* BTN Dark mode */
-.header {
-    background-color: #3b2a1a;
-    color: antiquewhite;
-    height: 70px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 24px;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s;
-}
-
-.header-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.header-icon {
-    font-size: 1.6rem;
-}
-
-.header h1 {
-    font-size: 1.4rem;
-    margin: 0;
-    color: antiquewhite;
-    letter-spacing: 1px;
-}
-
 .header-btns {
     display: flex;
     gap: 8px;
