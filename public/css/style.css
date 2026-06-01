@@ -3,6 +3,7 @@ body {
     text-align: center;
     background-color: bisque;
     font-family: 'Times New Roman', Times, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .btn-top {
@@ -34,6 +35,7 @@ body {
     padding: 2rem;
     border-radius: 12px;
     box-shadow: 6px 4px 6px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
 }
 
 .form-group {
@@ -44,6 +46,7 @@ label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 500;
+    text-align: left;
 }
 
 input[type="text"],
@@ -54,9 +57,10 @@ textarea {
     border-radius: 8px;
     font-family: inherit;
     font-size: 1rem;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, background-color 0.3s, color 0.3s;
     box-shadow: 6px 4px 6px 4px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--border-color)
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
 }
 
 input[type="text"]:focus,
@@ -74,7 +78,7 @@ textarea:focus {
     cursor: pointer;
     transition: background-color 0.2s;
     box-shadow: 6px 4px 6px 4px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--border-color)
+    border: 1px solid var(--border-color);
 }
 
 .submit-btn:hover {
@@ -103,6 +107,7 @@ textarea:focus {
     border-radius: 12px;
     box-shadow: 6px 4px 6px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 2rem;
+    transition: background-color 0.3s;
 }
 
 .messages-section h3 {
@@ -113,6 +118,7 @@ textarea:focus {
 .container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 1rem;
 }
 
 .form-wrapper {
@@ -136,7 +142,7 @@ textarea:focus {
 #inputUsermail,
 #inputPhone,
 #inputPostcode,
-#inputMessage{
+#inputMessage {
     margin-top: -15px;
     margin-bottom: 10px;
 }
@@ -149,6 +155,8 @@ textarea:focus {
     border-radius: 12px;
     box-shadow: 6px 4px 6px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 2rem;
+    text-align: left;
+    transition: background-color 0.3s;
 }
 
 #errorCheckbox {
@@ -161,112 +169,165 @@ textarea:focus {
     margin-top: -3px;
 }
 
-/* Dark mode BTN */
+.char-count {
+    text-align: right;
+    font-size: 0.85rem;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+    color: #666;
+}
+
+/* BTN Dark mode */
 .header {
-    background-color: black;
-    color: white;
-    height: 50px;
-    border-radius: 5px;
+    background-color: #3b2a1a;
+    color: antiquewhite;
+    height: 70px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 15px;
+    padding: 0 24px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-icon {
+    font-size: 1.6rem;
+}
+
+.header h1 {
+    font-size: 1.4rem;
+    margin: 0;
+    color: antiquewhite;
+    letter-spacing: 1px;
 }
 
 .header-btns {
     display: flex;
     gap: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 0;
 }
 
 .header-btns button {
-    padding: 4px 10px;
+    padding: 8px 16px;
     background: transparent;
-    color: black;
-    border: 1px solid black;
-    border-radius: 4px;
-    font-size: 0.8rem;
+    color: antiquewhite;
+    border: 2px solid antiquewhite;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    font-family: inherit;
 }
 
 .header-btns button:hover {
-    background: rgba(255, 255, 255, 0.15);
-    cursor: pointer;
+    background: antiquewhite;
+    color: #3b2a1a;
 }
 
 /* Dark mode */
 body.dark {
-    background-color: rgba(0, 0, 0, 0.884);
-    color: white;
+    background-color: #1c1c1e;
+    color: #e5e5e5;
 }
 
 body.dark .header {
-    background-color: #333;
+    background-color: #111;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+body.dark .header h1 {
+    color: #f5deb3;
 }
 
 body.dark .header-btns button {
-    color: white;
-    padding: 4px 10px;
-    background: transparent;
-    border: 1px solid white;
-    border-radius: 4px;
-    font-size: 0.8rem;
+    color: #f5deb3;
+    border-color: #f5deb3;
 }
 
 body.dark .header-btns button:hover {
-    background: rgba(255, 255, 255, 0.15);
-    cursor: pointer;
-}
-
-body.dark button {
-    background-color: #444;
-    color: #eee;
-    border-color: #666;
+    background: #f5deb3;
+    color: #111;
 }
 
 body.dark .form-section {
-    background-color: grey;
+    background-color: #2c2c2e;
+    box-shadow: 6px 4px 6px 4px rgba(0, 0, 0, 0.4);
+}
+
+body.dark input[type="text"],
+body.dark input[type="email"],
+body.dark textarea {
+    background-color: #3a3a3c;
+    color: #e5e5e5;
+    border-color: #555;
+}
+
+body.dark input[type="text"]::placeholder,
+body.dark input[type="email"]::placeholder,
+body.dark textarea::placeholder {
+    color: #999;
+}
+
+body.dark .submit-btn {
+    background-color: #3a3a3c;
+    color: #e5e5e5;
+    border-color: #555;
 }
 
 body.dark .submit-btn:hover {
-    color: black;
-}
-
-body.dark .message_card {
-    background-color: grey;
-}
-
-body.dark .btn-top {
-    background-color: grey;
-    color: white;
-}
-
-body.dark .btn-top:hover {
-    background-color: white;
-    color: black;
-}
-
-body.dark .pagination {
-    background-color: grey;
-    color: white;
-}
-
-body.dark .pagination a {
     background-color: #555;
     color: white;
 }
 
-body.dark .pagination a:hover {
-    background-color: #777;
-}
-
-body.dark .pagination-current {
-    background-color: #888;
-    color: white;
+body.dark .message_card {
+    background-color: #2c2c2e;
+    box-shadow: 6px 4px 6px 4px rgba(0, 0, 0, 0.4);
 }
 
 body.dark .box-accord {
-    color: white;
-    background-color: #333;
+    background-color: #2c2c2e;
+    color: #e5e5e5;
+}
+
+body.dark .char-count {
+    color: #aaa;
+}
+
+body.dark .btn-top {
+    background-color: #3a3a3c;
+    color: #e5e5e5;
+}
+
+body.dark .btn-top:hover {
+    background-color: #f5deb3;
+    color: #111;
+}
+
+body.dark .pagination {
+    background-color: #2c2c2e;
+    color: #e5e5e5;
+}
+
+body.dark .pagination a {
+    background-color: #3a3a3c;
+    color: #e5e5e5;
+}
+
+body.dark .pagination a:hover {
+    background-color: #555;
+}
+
+body.dark .pagination-current {
+    background-color: #444;
+    color: #999;
 }
 
 /* Pagination */
@@ -318,8 +379,40 @@ body.dark .box-accord {
 }
 
 /* Responsive */
-@media (max-width: 700px) {
+@media (min-width: 600px) and (max-width: 1024px) {
     .form-wrapper {
         flex-direction: column;
+    }
+
+    .form-aside {
+        width: 100%;
+    }
+
+    .form-group {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .form-group label {
+        min-width: 140px;
+        margin-bottom: 0;
+        text-align: right;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        flex: 1;
+    }
+}
+
+@media (max-width: 599px) {
+    .form-wrapper {
+        flex-direction: column;
+    }
+
+    .form-aside {
+        width: 100%;
     }
 }

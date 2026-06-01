@@ -16,11 +16,14 @@
 <body>
 
 <div class="container">
-    <header>
-        <h1>TI2 | Livre d'or</h1>
-            <div class="header-btns">
-                <button id="btnDark">🌙 Dark Mode</button>
-            </div>
+    <header class="header">
+        <div class="header-logo">
+            <span class="header-icon">📖</span>
+            <h1>TI2 | Livre d'or</h1>
+        </div>
+        <div class="header-btns">
+            <button id="btnDark">🌙 Dark Mode</button>
+        </div>
     </header>
 
 <main>
@@ -137,6 +140,14 @@ echo '<p>$_GET</p>';
 var_dump($_GET);
 var_dump($connectDB);*/
 ?>
+
+        </section>
+    </aside>
+
+</div>
+
+    </main>
+</div>
 
 <a href="#top" class="btn-top">⬆</a>
 
